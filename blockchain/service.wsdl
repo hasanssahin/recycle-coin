@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions targetNamespace="http://tempuri.org/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:tns="http://tempuri.org/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <xs:element name="SHA256olusturmaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="donusecekEmail" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SHA256olusturmaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="1" maxOccurs="1" name="result" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+
+  <wsdl:message name="SHA256olusturmaSoapIn">
+    <wsdl:part name="parameters" element="tns:SHA256olusturmaRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SHA256olusturmaSoapOut">
+    <wsdl:part name="parameters" element="tns:SHA256olusturmaResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="SHA256olusturmaSoapPort">
+    <wsdl:operation name="SHA256olusturma">
+      <wsdl:input message="tns:SHA256olusturmaSoapIn"/>
+      <wsdl:output message="tns:SHA256olusturmaSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="SHA256olusturmaServiceSoapBinding" type="tns:SHA256olusturmaSoapPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SHA256olusturma">
+      <soap:operation soapAction="SHA256olusturma" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:binding name="SHA256olusturmaServiceSoap12Binding" type="tns:SHA256olusturmaSoapPort">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SHA256olusturma">
+      <soap12:operation soapAction="SHA256olusturma" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="SHA256olusturmaService">
+    <wsdl:port name="SHA256olusturmaServiceSoapPort" binding="tns:SHA256olusturmaServiceSoapBinding">
+      <soap:address location="http://localhost:8000/wsdl"/>
+    </wsdl:port>
+    <wsdl:port name="SHA256olusturmaServiceSoap12Port" binding="tns:SHA256olusturmaServiceSoap12Binding">
+      <soap12:address location="http://localhost:8000/wsdl"/>
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

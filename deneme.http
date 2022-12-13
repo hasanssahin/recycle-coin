@@ -1,0 +1,54 @@
+@BASE_URL=http://localhost:3000/api
+
+//Kullanıcı kayıt olma
+###
+POST {{BASE_URL}}/users
+Content-Type: application/json
+
+{
+    "isim":"furkan",
+    "soyisim":"ceylan",
+    "email":"furkanceylan@gmail.com",
+    "sifre":"furkan1234"
+}
+
+//Giriş yapma
+###
+POST {{BASE_URL}}/users/giris
+Content-Type: application/json
+
+{
+    "email":"hasansahin@gmail.com",
+    "sifre":"hasan1234"
+}
+
+//Kendini güncelleme
+###
+PATCH {{BASE_URL}}/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA3ODMwODMsImV4cCI6MTY3MDc4NjY4M30.AtONHA77ak7agU7MlMHyq197AtKkGmsAE1cyEeulU_Q
+
+{
+    "soyisim":"sahin"
+}
+
+//Admin tüm kullanıcıları listeliyor
+###
+GET {{BASE_URL}}/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA4NTE3ODksImV4cCI6MTY3MDg1NTM4OX0.kQPQklJU9nJH_7aBKzrb8uzC0DEe2AjqNbAWs4vk8f8
+
+
+//Oturum açan kullanıcı bilgileri
+###
+GET {{BASE_URL}}/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA3ODMwODMsImV4cCI6MTY3MDc4NjY4M30.AtONHA77ak7agU7MlMHyq197AtKkGmsAE1cyEeulU_Q
+
+
+//Kişi kendini siliyor
+###
+DELETE {{BASE_URL}}/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2MDAyMWFhNzI2YTM3ZmYwNzY3MWYiLCJpYXQiOjE2NzA3Nzc2MTAsImV4cCI6MTY3MDc4MTIxMH0.GzPA9RvvOhUCBcJsHQqtS4UrXLfji15ge9vSRIus3Sw
+
+
+###
+GET {{BASE_URL}}/kategoriler

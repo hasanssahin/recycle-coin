@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "elliptic": "^6.5.4",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "soap": "^1.0.0"
+  }
+}
