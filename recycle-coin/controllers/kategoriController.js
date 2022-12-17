@@ -1,7 +1,7 @@
-const Kategoriler=require('../models/kategoriModel')
+const Kategori=require('../models/kategoriModel')
 
 const tumKategorileriListele = async (req, res) => {
-    const tumKategoriler = await Kategoriler.find({})
+    const tumKategoriler = await Kategori.find({})
     res.json(tumKategoriler)
 }
 

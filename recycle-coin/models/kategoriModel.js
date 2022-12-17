@@ -2,9 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const kategoriSchema=new Schema({
-    turu:{
-        type:String
-    }
 },{collection:'kategoriler'})
 
 kategoriSchema.methods.toJSON=function(){
@@ -13,6 +10,6 @@ kategoriSchema.methods.toJSON=function(){
     return kategori
 }
 
-const Kategoriler=mongoose.model('Kategoriler',kategoriSchema)
+const Kategori=mongoose.model('Kategoriler',kategoriSchema)
 
-module.exports=Kategoriler
+module.exports=Kategori

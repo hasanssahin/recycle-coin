@@ -6,10 +6,10 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-    "isim":"furkan",
-    "soyisim":"ceylan",
-    "email":"furkanceylan@gmail.com",
-    "sifre":"furkan1234"
+    "isim":"kenan",
+    "soyisim":"yıldız",
+    "email":"kenanyildiz@gmail.com",
+    "sifre":"kenan1234"
 }
 
 //Giriş yapma
@@ -35,8 +35,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhY
 //Admin tüm kullanıcıları listeliyor
 ###
 GET {{BASE_URL}}/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA4NTE3ODksImV4cCI6MTY3MDg1NTM4OX0.kQPQklJU9nJH_7aBKzrb8uzC0DEe2AjqNbAWs4vk8f8
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2MDAwZmFhNzI2YTM3ZmYwNzY3MWQiLCJpYXQiOjE2NzExOTk2NTksImV4cCI6MTY3MTIwMzI1OX0.CiZJhkitVdDDkh7AqPQ-lkhFDo_5twNwNpnFnt4C5IQ
 
 //Oturum açan kullanıcı bilgileri
 ###
@@ -52,3 +51,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2MDAyM
 
 ###
 GET {{BASE_URL}}/kategoriler
+
+
+###
+POST {{BASE_URL}}/camlar
+Content-Type: application/json
+
+{
+    "sha": "b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f",
+    "email": "kenanyildiz@gmail.com",
+    "tur": "Float",
+    "miktar": 2,
+    "verilenKarbon": 400
+}
+
+###
+PATCH {{BASE_URL}}/users/b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyNzM3ODgsImV4cCI6MTY3MTI3NzM4OH0.U3gaN286ewcWsp_KTZ-G4_PdywrFacHBHR44QD31VbQ
+
+{
+    "karbonMiktari":400
+}

@@ -42,11 +42,9 @@ const userSchema = new Schema({
     },
     karbonMiktari: {
         type: Number,
-        default: 0
     },
     coinMiktari: {
         type: Number,
-        default: 0
     }
 }, { collection: 'users' })
 
@@ -66,16 +64,13 @@ userSchema.statics.joiValidationForUpdate = function (userObject) {
     return schema.validate(userObject)
 }
 
-userSchema.methods.toJSON=function(){
+/* userSchema.methods.toJSON=function(){
     const user=this.toObject()
     delete user._id
     delete user.__v
     delete user.sifre
-    if(!user.isAdmin){
-        delete user.isAdmin
-    }
     return user
-}
+} */
 
 userSchema.statics.girisYap = async (email, sifre) => {
     const { error, value } = schema.validate({ email, sifre })

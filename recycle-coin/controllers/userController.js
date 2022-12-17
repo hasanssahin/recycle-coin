@@ -11,7 +11,7 @@ const yeniUserOlustur = async (req, res, next) => {
             if (err) {
                 throw err;
             }
-
+            
             const args = {
                 donusecekEmail: req.body.email
             }
@@ -115,6 +115,10 @@ const adminUserSilme = async (req, res, next) => {
     }
 }
 
+const userKarbonDegeriniGuncelle=async (req,res,next)=>{
+    const sonuc=await User.findOneAndUpdate({sha:req.params.sha},{karbonMiktari:req.body.karbonMiktari})
+}
+
 module.exports = {
     yeniUserOlustur,
     girisYap,
@@ -122,5 +126,6 @@ module.exports = {
     oturumAcanKullaniciyiGuncelle,
     oturumuAcanKullaniciKendiniSil,
     tumUserlariListele,
-    adminUserSilme
+    adminUserSilme,
+    userKarbonDegeriniGuncelle
 }
