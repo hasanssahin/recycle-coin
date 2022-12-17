@@ -54,22 +54,26 @@ GET {{BASE_URL}}/kategoriler
 
 
 ###
-POST {{BASE_URL}}/camlar
+POST {{BASE_URL}}/organikler
 Content-Type: application/json
 
 {
     "sha": "b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f",
     "email": "kenanyildiz@gmail.com",
-    "tur": "Float",
+    "tur": "1. Hamur",
     "miktar": 2,
-    "verilenKarbon": 400
+    "verilenKarbon": 1200
 }
 
 ###
 PATCH {{BASE_URL}}/users/b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyNzM3ODgsImV4cCI6MTY3MTI3NzM4OH0.U3gaN286ewcWsp_KTZ-G4_PdywrFacHBHR44QD31VbQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyODg3NTgsImV4cCI6MTY3MTI5MjM1OH0.bFFSIdYFi9fRNt4iMiu9-s2cSvnVrOxPunNiB2pWZS4
 
 {
-    "karbonMiktari":400
+    "karbonMiktari":1600
 }
+
+###
+DELETE {{BASE_URL}}/camlar/639d9e140c9a45e9917f044a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyNzM3ODgsImV4cCI6MTY3MTI3NzM4OH0.U3gaN286ewcWsp_KTZ-G4_PdywrFacHBHR44QD31VbQ
