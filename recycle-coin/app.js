@@ -1,5 +1,6 @@
 const express = require('express')
 require('./database/dbConnection')
+require('./grpc/main')
 const hataMiddleware = require('./middleware/hataMiddleware')
 
 //ROUTERS

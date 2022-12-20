@@ -6,10 +6,10 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-    "isim":"kenan",
-    "soyisim":"yıldız",
-    "email":"kenanyildiz@gmail.com",
-    "sifre":"kenan1234"
+    "isim":"",
+    "soyisim":"",
+    "email":"",
+    "sifre":""
 }
 
 //Giriş yapma
@@ -18,35 +18,35 @@ POST {{BASE_URL}}/users/giris
 Content-Type: application/json
 
 {
-    "email":"hasansahin@gmail.com",
-    "sifre":"hasan1234"
+    "email":"",
+    "sifre":""
 }
 
 //Kendini güncelleme
 ###
 PATCH {{BASE_URL}}/users/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA3ODMwODMsImV4cCI6MTY3MDc4NjY4M30.AtONHA77ak7agU7MlMHyq197AtKkGmsAE1cyEeulU_Q
+Authorization: Bearer --token gelecek--
 
 {
-    "soyisim":"sahin"
+    "soyisim":""
 }
 
 //Admin tüm kullanıcıları listeliyor
 ###
 GET {{BASE_URL}}/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2MDAwZmFhNzI2YTM3ZmYwNzY3MWQiLCJpYXQiOjE2NzExOTk2NTksImV4cCI6MTY3MTIwMzI1OX0.CiZJhkitVdDDkh7AqPQ-lkhFDo_5twNwNpnFnt4C5IQ
+Authorization: Bearer --token gelecek--
 
 //Oturum açan kullanıcı bilgileri
 ###
 GET {{BASE_URL}}/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzA3ODMwODMsImV4cCI6MTY3MDc4NjY4M30.AtONHA77ak7agU7MlMHyq197AtKkGmsAE1cyEeulU_Q
+Authorization: Bearer --token gelecek--
 
 
 //Kişi kendini siliyor
 ###
 DELETE {{BASE_URL}}/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2MDAyMWFhNzI2YTM3ZmYwNzY3MWYiLCJpYXQiOjE2NzA3Nzc2MTAsImV4cCI6MTY3MDc4MTIxMH0.GzPA9RvvOhUCBcJsHQqtS4UrXLfji15ge9vSRIus3Sw
+Authorization: Bearer --token gelecek--
 
 
 ###
@@ -54,26 +54,42 @@ GET {{BASE_URL}}/kategoriler
 
 
 ###
-POST {{BASE_URL}}/organikler
+POST {{BASE_URL}}/ahsaplar
 Content-Type: application/json
 
 {
-    "sha": "b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f",
-    "email": "kenanyildiz@gmail.com",
-    "tur": "1. Hamur",
+    "sha": "",
+    "email": "",
+    "tur": "",
     "miktar": 2,
-    "verilenKarbon": 1200
+    "verilenKarbon": 400
 }
 
 ###
-PATCH {{BASE_URL}}/users/b58e74291004b2694b7e5fe3702c896e234fb27b684155b0a2490c354e497f3f
+PATCH {{BASE_URL}}/users/sha gelecek
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyODg3NTgsImV4cCI6MTY3MTI5MjM1OH0.bFFSIdYFi9fRNt4iMiu9-s2cSvnVrOxPunNiB2pWZS4
+Authorization: Bearer --token gelecek--
 
 {
     "karbonMiktari":1600
 }
 
 ###
-DELETE {{BASE_URL}}/camlar/639d9e140c9a45e9917f044a
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZmZhYmFhNzI2YTM3ZmYwNzY3MWIiLCJpYXQiOjE2NzEyNzM3ODgsImV4cCI6MTY3MTI3NzM4OH0.U3gaN286ewcWsp_KTZ-G4_PdywrFacHBHR44QD31VbQ
+DELETE {{BASE_URL}}/camlar/id gelecek
+Authorization: Bearer --token gelecek--
+
+###
+PATCH {{BASE_URL}}/users/sha gelecek
+Content-Type: application/json
+Authorization: Bearer --token gelecek--
+
+{
+    "gonderilenCoin":150
+}
+    
+###
+GET {{BASE_URL}}/ahsaplar
+
+
+###
+GET {{BASE_URL}}/ahsaplar/e-mail gelecek

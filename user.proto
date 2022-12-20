@@ -1,0 +1,13 @@
+syntax="proto3";
+
+service UserService{
+    rpc generatingUsername(UserRequest) returns(UserResponse){}
+}
+
+message UserRequest{
+    string email=1;
+}
+
+message UserResponse{
+    string userName=1;
+}

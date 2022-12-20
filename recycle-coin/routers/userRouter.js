@@ -6,9 +6,10 @@ const { yeniUserOlustur,
     oturumAcanKullaniciBilgileri,
     oturumAcanKullaniciyiGuncelle,
     oturumuAcanKullaniciKendiniSil,
-    tumUserlariListele,
+    tumUserlariEmaileGoreListele,
     adminUserSilme,
-    userKarbonDegeriniGuncelle } = require('../controllers/userController')
+    userKarbonDegeriniGuncelle,
+    coinTransferi } = require('../controllers/userController')
 
 //Yeni kullanıcı kaydı
 router.post('/', yeniUserOlustur)
@@ -26,12 +27,16 @@ router.patch('/me', authMiddleware, oturumAcanKullaniciyiGuncelle)
 router.delete('/me', authMiddleware, oturumuAcanKullaniciKendiniSil)
 
 //Adminin tüm userları listelemesi için
-/* router.get('/', tumUserlariListele) */
-router.get('/', [authMiddleware, adminMiddleware], tumUserlariListele)
+router.get('/', [authMiddleware, adminMiddleware], tumUserlariEmaileGoreListele)
 
 //Admin idsi girilen user silme
 router.delete('/:id', [authMiddleware, adminMiddleware], adminUserSilme)
 
-router.patch('/:sha',[authMiddleware,adminMiddleware],userKarbonDegeriniGuncelle)
+//sha adresi girilen kişiye coin transferi
+router.patch('/:sha',authMiddleware,coinTransferi)
+
+//admin girilen geri dönüşümü onaylarsa karbon değerini gunceller
+router.patch('/:email',[authMiddleware,adminMiddleware],userKarbonDegeriniGuncelle)
+
 
 module.exports = router

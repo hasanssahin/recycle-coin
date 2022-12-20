@@ -10,9 +10,6 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
-    sha: {
-        type: String,
-    },
     isim: {
         type: String,
         required: true,
@@ -39,6 +36,12 @@ const userSchema = new Schema({
         required: true,
         trim: true,
         minlength: 6
+    },
+    userName:{
+        type:String
+    },
+    sha: {
+        type: String,
     },
     karbonMiktari: {
         type: Number,
