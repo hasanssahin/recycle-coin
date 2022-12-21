@@ -44,7 +44,6 @@ const adminAhsapSil=async (req,res,next)=>{
 }
 
 
-
 module.exports = {
     yeniAhsapEkle,
     adminAhsapSil,

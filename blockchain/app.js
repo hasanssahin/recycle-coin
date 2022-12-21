@@ -30,5 +30,5 @@ app.listen(8000,function(){
     console.log('Listening on port ' + 8000);
     const wsdl_path="/wsdl"
     soap.listen(app,wsdl_path,serviceObject,xml)
-    console.log("Check http://localhost:8000" + wsdl_path + "?wsdl to see if the service is working");
-})
+/*     console.log("Check http://localhost:8000" + wsdl_path + "?wsdl to see if the service is working");
+ */})

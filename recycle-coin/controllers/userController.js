@@ -23,12 +23,12 @@ const yeniUserOlustur = async (req, res, next) => {
                 eklenecekUser.sha = gelenSHA256
             })
         })
-        const userRequest={
+        const userRequest = {
             email: req.body.email
         }
         client.generatingUsername(userRequest, (err, data) => {
             if (!err) {
-                eklenecekUser.userName=data.userName
+                eklenecekUser.userName = data.userName
             }
         })
         eklenecekUser.sifre = await bcrypt.hash(req.body.sifre, 10)
@@ -123,19 +123,32 @@ const adminUserSilme = async (req, res, next) => {
     }
 }
 
+
+
 const userKarbonDegeriniGuncelle = async (req, res, next) => {
-    await User.findOneAndUpdate({ email: req.params.email }, { karbonMiktari: req.body.karbonMiktari })
+    const bulunanKisi = await User.findOne({ userName: req.params.userName })
+    const karbonToplam=bulunanKisi.karbonMiktari+req.body.karbonMiktari
+    const guncellenecekKisi=await User.findOneAndUpdate({ userName: req.params.userName }, { karbonMiktari: karbonToplam },{ new: true, runValidators: true })
+   
+    while (guncellenecekKisi.karbonMiktari >= 10000) {
+        guncellenecekKisi.karbonMiktari = guncellenecekKisi.karbonMiktari - 10000
+        guncellenecekKisi.coinMiktari = guncellenecekKisi.coinMiktari + 1
+    }
+    await User.findOneAndUpdate({ userName: req.params.userName }, { karbonMiktari: guncellenecekKisi.karbonMiktari, coinMiktari: guncellenecekKisi.coinMiktari })
 }
+
+
+
 
 const coinTransferi = async (req, res, next) => {
     const gonderici = await User.findOne({ sha: req.user.sha })
     if (gonderici) {
-        const gondericiBakiye = gonderici.coin - req.body.gonderilenCoin
+        const gondericiBakiye = gonderici.coinMiktari - req.body.gonderilenCoin
         await User.updateOne({ sha: req.user.sha }, { coinMiktari: gondericiBakiye })
         const alici = await User.findOne({ sha: req.params.sha })
         if (alici) {
             const aliciBakiye = alici.coinMiktari + req.body.gonderilenCoin
-            const aliciGuncelle = await User.updateOne({ sha: alici.sha }, { coinMiktari: aliciBakiye })
+            await User.updateOne({ sha: req.params.sha }, { coinMiktari: aliciBakiye })
         } else {
             return res.json({
                 mesaj: "Alıcı sha adresi yanlış"
@@ -147,7 +160,6 @@ const coinTransferi = async (req, res, next) => {
             mesaj: "Gönderici sha adresi yanlış"
         })
     }
-
 }
 
 

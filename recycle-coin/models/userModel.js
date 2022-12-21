@@ -45,9 +45,11 @@ const userSchema = new Schema({
     },
     karbonMiktari: {
         type: Number,
+        default:0
     },
     coinMiktari: {
         type: Number,
+        default:0
     }
 }, { collection: 'users' })
 

@@ -32,11 +32,11 @@ router.get('/', [authMiddleware, adminMiddleware], tumUserlariEmaileGoreListele)
 //Admin idsi girilen user silme
 router.delete('/:id', [authMiddleware, adminMiddleware], adminUserSilme)
 
-//sha adresi girilen kişiye coin transferi
-router.patch('/:sha',authMiddleware,coinTransferi)
-
 //admin girilen geri dönüşümü onaylarsa karbon değerini gunceller
-router.patch('/:email',[authMiddleware,adminMiddleware],userKarbonDegeriniGuncelle)
+router.patch('/:userName',[authMiddleware,adminMiddleware],userKarbonDegeriniGuncelle)
+
+//sha adresi girilen kişiye coin transferi
+router.patch('/transfer/:sha',authMiddleware,coinTransferi)
 
 
 module.exports = router
