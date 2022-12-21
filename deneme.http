@@ -52,44 +52,40 @@ Authorization: Bearer --token gelecek--
 ###
 GET {{BASE_URL}}/kategoriler
 
-
+//GERİ DÖNÜŞÜM YAPMA
 ###
-POST {{BASE_URL}}/ahsaplar
+POST {{BASE_URL}}/camlar
 Content-Type: application/json
 
 {
     "sha": "",
     "email": "",
     "tur": "",
-    "miktar": 2,
-    "verilenKarbon": 400
+    "miktar": 15,
+    "verilenKarbon": 22000
 }
 
+//COIN TRANSFERİ
 ###
-PATCH {{BASE_URL}}/users/sha gelecek
+PATCH {{BASE_URL}}/users/transfer/sha gelecek
 Content-Type: application/json
 Authorization: Bearer --token gelecek--
 
 {
-    "karbonMiktari":1600
+    "gonderilenCoin":2
 }
 
+//ADMİN GERİ DÖNÜŞÜM ONAYLAMA
+###
+PATCH {{BASE_URL}}/users/username gelecek
+Content-Type: application/json
+Authorization: Bearer --token gelecek--
+
+{
+    "karbonMiktari":22000
+}   
+
+//ADMİN GERİ DÖNÜŞÜM REDDETME
 ###
 DELETE {{BASE_URL}}/camlar/id gelecek
 Authorization: Bearer --token gelecek--
-
-###
-PATCH {{BASE_URL}}/users/sha gelecek
-Content-Type: application/json
-Authorization: Bearer --token gelecek--
-
-{
-    "gonderilenCoin":150
-}
-    
-###
-GET {{BASE_URL}}/ahsaplar
-
-
-###
-GET {{BASE_URL}}/ahsaplar/e-mail gelecek
