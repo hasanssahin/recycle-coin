@@ -16,7 +16,6 @@ const ahsapRouter=require('./routers/ahsapRouter')
 const betonRouter=require('./routers/betonRouter')
 const tekstilRouter=require('./routers/tekstilRouter')
 const elektronikRouter=require('./routers/elektronikRouter')
-const organikRouter=require('./routers/organikRouter')
 
 const app = express()
 app.use(express.json())
@@ -33,7 +32,6 @@ app.use('/api/ahsaplar',ahsapRouter)
 app.use('/api/betonlar',betonRouter)
 app.use('/api/tekstiller',tekstilRouter)
 app.use('/api/elektronikler',elektronikRouter)
-app.use('/api/organikler',organikRouter)
 
 app.use(hataMiddleware)
 

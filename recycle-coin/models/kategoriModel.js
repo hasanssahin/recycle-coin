@@ -12,4 +12,14 @@ kategoriSchema.methods.toJSON=function(){
 
 const Kategori=mongoose.model('Kategoriler',kategoriSchema)
 
-module.exports=Kategori
+const camTurleriSchema=new Schema({
+},{collection:'cam_turleri'})
+
+const CamTur=mongoose.model('CamTur',camTurleriSchema)
+
+const plastikTurleriSchema=new Schema({
+},{collection:'plastik_turleri'})
+
+const PlastikTur=mongoose.model('PlastikTur',plastikTurleriSchema)
+
+module.exports={Kategori,CamTur,PlastikTur}

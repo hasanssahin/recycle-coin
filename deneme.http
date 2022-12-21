@@ -89,3 +89,6 @@ Authorization: Bearer --token gelecek--
 ###
 DELETE {{BASE_URL}}/camlar/id gelecek
 Authorization: Bearer --token gelecek--
+
+###
+GET {{BASE_URL}}/kategoriler/plastikTurleri
