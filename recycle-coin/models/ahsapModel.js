@@ -6,7 +6,7 @@ const ahsapSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'ahsaplar'})
 
 const Ahsap=mongoose.model('Ahsap',ahsapSchema)

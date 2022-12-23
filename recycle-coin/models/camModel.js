@@ -6,7 +6,7 @@ const camSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'camlar'})
 
 const Cam=mongoose.model('Cam',camSchema)

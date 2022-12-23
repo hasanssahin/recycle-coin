@@ -6,6 +6,7 @@ const hataMiddleware = require('./middleware/hataMiddleware')
 //ROUTERS
 const userRouter = require('./routers/userRouter')
 const kategoriRouter = require('./routers/kategoriRouter')
+
 const camRouter=require('./routers/camRouter')
 const plastikRouter=require('./routers/plastikRouter')
 const kagitRouter=require('./routers/kagitRouter')

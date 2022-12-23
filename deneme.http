@@ -18,8 +18,8 @@ POST {{BASE_URL}}/users/giris
 Content-Type: application/json
 
 {
-    "email":"",
-    "sifre":""
+    "email":"hasansahin@gmail.com",
+    "sifre":"hasan1234"
 }
 
 //Kendini güncelleme
@@ -54,15 +54,14 @@ GET {{BASE_URL}}/kategoriler
 
 //GERİ DÖNÜŞÜM YAPMA
 ###
-POST {{BASE_URL}}/camlar
+POST {{BASE_URL}}/ahsaplar
 Content-Type: application/json
 
 {
-    "sha": "",
-    "email": "",
-    "tur": "",
-    "miktar": 15,
-    "verilenKarbon": 22000
+    "sha": "fdbccc246491d3c2ca3d10a13f8cf1fc80432c0dfb83f6017d67849b8913e5ce",
+    "email": "ahmetcanerol@gmail.com",
+    "tur": "Maun",
+    "miktar": 2
 }
 
 //COIN TRANSFERİ
@@ -77,12 +76,12 @@ Authorization: Bearer --token gelecek--
 
 //ADMİN GERİ DÖNÜŞÜM ONAYLAMA
 ###
-PATCH {{BASE_URL}}/users/username gelecek
+PATCH {{BASE_URL}}/users/ahmetcanerol
 Content-Type: application/json
-Authorization: Bearer --token gelecek--
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0NDU3Y2M2OGZmYTZmYzU2MzgiLCJpYXQiOjE2NzE3MDg0MTAsImV4cCI6MTY3MTcxMjAxMH0.MgKO9kNMsbEqI3LcVX9QMzP9QH4VjJnrCaUVIzd17qI
 
 {
-    "karbonMiktari":22000
+    "karbonMiktari":600
 }   
 
 //ADMİN GERİ DÖNÜŞÜM REDDETME
@@ -91,4 +90,4 @@ DELETE {{BASE_URL}}/camlar/id gelecek
 Authorization: Bearer --token gelecek--
 
 ###
-GET {{BASE_URL}}/kategoriler/plastikTurleri
+GET {{BASE_URL}}/kategoriler/elektronikTurleri

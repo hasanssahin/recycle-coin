@@ -40,3 +40,5 @@ router.patch('/transfer/:sha',authMiddleware,coinTransferi)
 
 
 module.exports = router
+
+//http://localhost:3000/api/users

@@ -1,13 +1,42 @@
 const Aluminyum = require('../models/aluminyumModel')
+const {AluminyumTur}=require('../models/kategoriModel')
 
 const yeniAluminyumEkle = async (req, res, next) => {
     try {
-        const eklenecekAluminyum = new Aluminyum(req.body)
-        await eklenecekAluminyum.save()
-        res.json(eklenecekAluminyum)
+        const eklenecekAluminyumTuru= await AluminyumTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekAluminyumTuru.karbonDegeri)*(req.body.miktar)
+        const aluminyum={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniAluminyumEkle = new Aluminyum(aluminyum)
+        await yeniAluminyumEkle.save()
+        res.json(yeniAluminyumEkle)
     } catch (e) {
         next(e)
     }
+}
+
+const aluminyumKayitListele=async (req, res, next) => {
+    const tumAluminyumlar = await Aluminyum.find({})
+    res.json(tumAluminyumlar)
+}
+
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininAluminyumları = await Aluminyum.find({email:req.params.email})
+    res.json(kisininAluminyumları)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Aluminyum.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminAluminyumSil=async (req,res,next)=>{
@@ -29,5 +58,8 @@ const adminAluminyumSil=async (req,res,next)=>{
 
 module.exports = {
     yeniAluminyumEkle,
-    adminAluminyumSil
+    adminAluminyumSil,
+    aluminyumKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }

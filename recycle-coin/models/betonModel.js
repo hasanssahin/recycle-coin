@@ -6,7 +6,7 @@ const betonSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'betonlar'})
 
 const Beton=mongoose.model('Beton',betonSchema)

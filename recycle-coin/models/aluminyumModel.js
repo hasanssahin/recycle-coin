@@ -6,7 +6,7 @@ const aluminyumSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'aluminyumlar'})
 
 const Aluminyum=mongoose.model('Aluminyum',aluminyumSchema)

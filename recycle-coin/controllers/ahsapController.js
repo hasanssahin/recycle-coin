@@ -1,8 +1,18 @@
 const Ahsap = require('../models/ahsapModel')
+const {AhsapTur}=require('../models/kategoriModel')
 
 const yeniAhsapEkle = async (req, res, next) => {
     try {
-        const yeniAhsapEkle = new Ahsap(req.body)
+        const eklenecekAhsapTuru= await AhsapTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekAhsapTuru.karbonDegeri)*(req.body.miktar)
+        const ahsap={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniAhsapEkle = new Ahsap(ahsap)
         await yeniAhsapEkle.save()
         res.json(yeniAhsapEkle)
     } catch (e) {

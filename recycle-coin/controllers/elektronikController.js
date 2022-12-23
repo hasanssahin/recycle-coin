@@ -1,13 +1,41 @@
 const Elektronik = require('../models/elektronikModel')
+const { ElektronikTur } = require('../models/kategoriModel')
 
 const yeniElektronikEkle = async (req, res, next) => {
     try {
-        const eklenecekElektronik = new Elektronik(req.body)
-        await eklenecekElektronik.save()
-        res.json(eklenecekElektronik)
+        const eklenecekElektronikTuru= await ElektronikTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekElektronikTuru.karbonDegeri)*(req.body.miktar)
+        const elektronik={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniElektronikEkle = new Elektronik(elektronik)
+        await yeniElektronikEkle.save()
+        res.json(yeniElektronikEkle)
     } catch (e) {
         next(e)
     }
+}
+
+const elektronikKayitListele=async (req, res, next) => {
+    const tumElektronik = await Elektronik.find({})
+    res.json(tumElektronik)
+}
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininElektronikleri = await Elektronik.find({email:req.params.email})
+    res.json(kisininElektronikleri)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Elektronik.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminElektronikSil=async (req,res,next)=>{
@@ -28,5 +56,8 @@ const adminElektronikSil=async (req,res,next)=>{
 
 module.exports = {
     yeniElektronikEkle,
-    adminElektronikSil
+    adminElektronikSil,
+    elektronikKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }

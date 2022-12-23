@@ -6,7 +6,7 @@ const kagitSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'kagitlar'})
 
 const Kagit=mongoose.model('Kagit',kagitSchema)

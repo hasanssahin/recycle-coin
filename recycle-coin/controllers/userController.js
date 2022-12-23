@@ -127,9 +127,9 @@ const adminUserSilme = async (req, res, next) => {
 
 const userKarbonDegeriniGuncelle = async (req, res, next) => {
     const bulunanKisi = await User.findOne({ userName: req.params.userName })
-    const karbonToplam=bulunanKisi.karbonMiktari+req.body.karbonMiktari
-    const guncellenecekKisi=await User.findOneAndUpdate({ userName: req.params.userName }, { karbonMiktari: karbonToplam },{ new: true, runValidators: true })
-   
+    const karbonToplam = bulunanKisi.karbonMiktari + req.body.karbonMiktari
+    const guncellenecekKisi = await User.findOneAndUpdate({ userName: req.params.userName }, { karbonMiktari: karbonToplam }, { new: true, runValidators: true })
+
     while (guncellenecekKisi.karbonMiktari >= 10000) {
         guncellenecekKisi.karbonMiktari = guncellenecekKisi.karbonMiktari - 10000
         guncellenecekKisi.coinMiktari = guncellenecekKisi.coinMiktari + 1

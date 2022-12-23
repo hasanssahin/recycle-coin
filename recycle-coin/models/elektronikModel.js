@@ -6,7 +6,7 @@ const elektronikSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'elektronikler'})
 
 const Elektronik=mongoose.model('Elektronik',elektronikSchema)

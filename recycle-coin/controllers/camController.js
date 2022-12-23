@@ -1,13 +1,41 @@
 const Cam = require('../models/camModel')
+const {CamTur}=require('../models/kategoriModel')
 
 const yeniCamEkle = async (req, res, next) => {
     try {
-        const eklenecekCam = new Cam(req.body)
-        await eklenecekCam.save()
-        res.json(eklenecekCam)
+        const eklenecekCamTuru= await CamTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekCamTuru.karbonDegeri)*(req.body.miktar)
+        const cam={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniCamEkle = new Cam(cam)
+        await yeniCamEkle.save()
+        res.json(yeniCamEkle)
     } catch (e) {
         next(e)
     }
+}
+
+const camKayitListele=async (req, res, next) => {
+    const tumCamlar = await Cam.find({})
+    res.json(tumCamlar)
+}
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininCamlari = await Cam.find({email:req.params.email})
+    res.json(kisininCamlari)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Cam.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminCamSil=async (req,res,next)=>{
@@ -28,5 +56,8 @@ const adminCamSil=async (req,res,next)=>{
 
 module.exports = {
     yeniCamEkle,
-    adminCamSil
+    adminCamSil,
+    camKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }
