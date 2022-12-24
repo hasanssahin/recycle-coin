@@ -1,44 +1,51 @@
-const router = require('express').Router()
-const authMiddleware = require('../middleware/authMiddleware')
-const adminMiddleware = require('../middleware/adminMiddleware')
-const { yeniUserOlustur,
-    girisYap,
-    oturumAcanKullaniciBilgileri,
-    oturumAcanKullaniciyiGuncelle,
-    oturumuAcanKullaniciKendiniSil,
-    tumUserlariEmaileGoreListele,
-    adminUserSilme,
-    userKarbonDegeriniGuncelle,
-    coinTransferi } = require('../controllers/userController')
+const router = require("express").Router();
+const authMiddleware = require("../middleware/authMiddleware");
+const adminMiddleware = require("../middleware/adminMiddleware");
+const {
+  yeniUserOlustur,
+  girisYap,
+  oturumAcanKullaniciBilgileri,
+  oturumAcanKullaniciyiGuncelle,
+  oturumuAcanKullaniciKendiniSil,
+  tumUserlariEmaileGoreListele,
+  adminUserSilme,
+  userKarbonDegeriniGuncelle,
+  coinTransferi,
+} = require("../controllers/userController");
 
 //Yeni kullanıcı kaydı
-router.post('/', yeniUserOlustur)
+router.post("/", yeniUserOlustur);
 
 //Giriş kontrol etme
-router.post('/giris', girisYap)
+router.post("/giris", girisYap);
 
 //Oturum açan kullanıcı bilgileri
-router.get('/me', authMiddleware, oturumAcanKullaniciBilgileri)
+router.get("/me", authMiddleware, oturumAcanKullaniciBilgileri);
 
 //Oturumu açık olan kullanıcının kendi bilgilerini güncelleyebilmesi için
-router.patch('/me', authMiddleware, oturumAcanKullaniciyiGuncelle)
+router.patch("/me", authMiddleware, oturumAcanKullaniciyiGuncelle);
 
 //Oturumu açık kişinin kendi hesabını silmesi için
-router.delete('/me', authMiddleware, oturumuAcanKullaniciKendiniSil)
+router.delete("/me", authMiddleware, oturumuAcanKullaniciKendiniSil);
 
 //Adminin tüm userları listelemesi için
-router.get('/', [authMiddleware, adminMiddleware], tumUserlariEmaileGoreListele)
+router.get(
+  "/",
+  [authMiddleware, adminMiddleware],
+  tumUserlariEmaileGoreListele
+);
 
 //Admin idsi girilen user silme
-router.delete('/:id', [authMiddleware, adminMiddleware], adminUserSilme)
+router.delete("/:id", [authMiddleware, adminMiddleware], adminUserSilme);
 
 //admin girilen geri dönüşümü onaylarsa karbon değerini gunceller
-router.patch('/:userName',[authMiddleware,adminMiddleware],userKarbonDegeriniGuncelle)
+router.patch(
+  "/:userName",
+  [authMiddleware, adminMiddleware],
+  userKarbonDegeriniGuncelle
+);
 
 //sha adresi girilen kişiye coin transferi
-router.patch('/transfer/:sha',authMiddleware,coinTransferi)
+router.patch("/transfer/:sha", authMiddleware, coinTransferi);
 
-
-module.exports = router
-
-//http://localhost:3000/api/users
+module.exports = router;

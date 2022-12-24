@@ -79,9 +79,11 @@ Authorization: Bearer --token gelecek--
 ###
 PATCH {{BASE_URL}}/users/ahmetcanerol
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0NDU3Y2M2OGZmYTZmYzU2MzgiLCJpYXQiOjE2NzE3MDg0MTAsImV4cCI6MTY3MTcxMjAxMH0.MgKO9kNMsbEqI3LcVX9QMzP9QH4VjJnrCaUVIzd17qI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0NDU3Y2M2OGZmYTZmYzU2MzgiLCJpYXQiOjE2NzE5MDY2ODcsImV4cCI6MTY3MTkxMDI4N30.U211E0VsSG0vXitPXBzN3CKvK_6F2FcAQSgaXrnII2w
 
 {
+    "_id":"63a71289ed40fd4e96649e34",
+    "tur":"Ahsap",
     "karbonMiktari":600
 }
 
@@ -96,3 +98,5 @@ GET {{BASE_URL}}/kategoriler/elektronikTurleri
 ###
 GET {{BASE_URL}}/ahsaplar
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0NDU3Y2M2OGZmYTZmYzU2MzgiLCJpYXQiOjE2NzE4ODU2OTgsImV4cCI6MTY3MTg4OTI5OH0.rmB4dIr77cuulCFisi1sYJrLDnmWks68Fjhfc48qzJU
+
+

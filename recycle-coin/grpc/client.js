@@ -1,17 +1,20 @@
-const PROTO_PATH="../user.proto"
+const PROTO_PATH = "../user.proto";
 
-const grpc=require('@grpc/grpc-js')
-const protoLoader=require('@grpc/proto-loader')
+const grpc = require("@grpc/grpc-js");
+const protoLoader = require("@grpc/proto-loader");
 
-const packageDefinition=protoLoader.loadSync(PROTO_PATH,{
-    keepCase:true,
-    longs:String,
-    enums:String,
-    arrays:true
-})
+const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  arrays: true,
+});
 
-const UserService=grpc.loadPackageDefinition(packageDefinition).UserService
+const UserService = grpc.loadPackageDefinition(packageDefinition).UserService;
 
-const client=new UserService("localhost:5000",grpc.credentials.createInsecure())
+const client = new UserService(
+  "localhost:5000",
+  grpc.credentials.createInsecure()
+);
 
-module.exports=client
+module.exports = client;
