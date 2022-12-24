@@ -59,6 +59,7 @@ Content-Type: application/json
 
 {
     "sha": "fdbccc246491d3c2ca3d10a13f8cf1fc80432c0dfb83f6017d67849b8913e5ce",
+    "userName":"ahmetcanerol",
     "email": "ahmetcanerol@gmail.com",
     "tur": "Maun",
     "miktar": 2
@@ -82,7 +83,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0N
 
 {
     "karbonMiktari":600
-}   
+}
 
 //ADMİN GERİ DÖNÜŞÜM REDDETME
 ###
@@ -91,3 +92,7 @@ Authorization: Bearer --token gelecek--
 
 ###
 GET {{BASE_URL}}/kategoriler/elektronikTurleri
+
+###
+GET {{BASE_URL}}/ahsaplar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2EyZTU0NDU3Y2M2OGZmYTZmYzU2MzgiLCJpYXQiOjE2NzE4ODU2OTgsImV4cCI6MTY3MTg4OTI5OH0.rmB4dIr77cuulCFisi1sYJrLDnmWks68Fjhfc48qzJU

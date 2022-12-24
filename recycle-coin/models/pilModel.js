@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 const pilSchema=new Schema({
     sha:String,
+    userName:String,
     email:String,
     tur:String,
     miktar:Number,

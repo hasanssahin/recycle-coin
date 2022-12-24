@@ -7,6 +7,7 @@ const yeniTekstilEkle = async (req, res, next) => {
         const verilecekKarbonMiktari=(eklenecekTekstilTuru.karbonDegeri)*(req.body.miktar)
         const tekstil={
             sha:req.body.sha,
+            userName:req.body.userName,
             email:req.body.email,
             tur:req.body.tur,
             miktar:req.body.miktar,

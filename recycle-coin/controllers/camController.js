@@ -7,6 +7,7 @@ const yeniCamEkle = async (req, res, next) => {
         const verilecekKarbonMiktari=(eklenecekCamTuru.karbonDegeri)*(req.body.miktar)
         const cam={
             sha:req.body.sha,
+            userName:req.body.userName,
             email:req.body.email,
             tur:req.body.tur,
             miktar:req.body.miktar,

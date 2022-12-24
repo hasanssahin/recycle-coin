@@ -7,6 +7,7 @@ const yeniAluminyumEkle = async (req, res, next) => {
         const verilecekKarbonMiktari=(eklenecekAluminyumTuru.karbonDegeri)*(req.body.miktar)
         const aluminyum={
             sha:req.body.sha,
+            userName:req.body.userName,
             email:req.body.email,
             tur:req.body.tur,
             miktar:req.body.miktar,

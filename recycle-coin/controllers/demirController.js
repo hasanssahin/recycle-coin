@@ -7,6 +7,7 @@ const yeniDemirEkle = async (req, res, next) => {
         const verilecekKarbonMiktari=(eklenecekDemirTuru.karbonDegeri)*(req.body.miktar)
         const demir={
             sha:req.body.sha,
+            userName:req.body.userName,
             email:req.body.email,
             tur:req.body.tur,
             miktar:req.body.miktar,
