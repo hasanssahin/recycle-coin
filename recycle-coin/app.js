@@ -1,4 +1,5 @@
 const express = require('express')
+const cors=require('cors')
 require('./database/dbConnection')
 require('./grpc/main')
 const hataMiddleware = require('./middleware/hataMiddleware')
@@ -6,7 +7,6 @@ const hataMiddleware = require('./middleware/hataMiddleware')
 //ROUTERS
 const userRouter = require('./routers/userRouter')
 const kategoriRouter = require('./routers/kategoriRouter')
-
 const camRouter=require('./routers/camRouter')
 const plastikRouter=require('./routers/plastikRouter')
 const kagitRouter=require('./routers/kagitRouter')
@@ -20,6 +20,7 @@ const elektronikRouter=require('./routers/elektronikRouter')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/users', userRouter)
 app.use('/api/kategoriler', kategoriRouter)

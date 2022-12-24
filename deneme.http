@@ -6,10 +6,10 @@ POST {{BASE_URL}}/users
 Content-Type: application/json
 
 {
-    "isim":"",
-    "soyisim":"",
-    "email":"",
-    "sifre":""
+    "isim":"asdf",
+    "soyisim":"asdg",
+    "email":"sadgasdg@gmail.com",
+    "sifre":"123456"
 }
 
 //Giriş yapma

@@ -1,13 +1,42 @@
+const { PilTur } = require('../models/kategoriModel')
 const Pil = require('../models/pilModel')
 
 const yeniPilEkle = async (req, res, next) => {
     try {
-        const eklenecekPil = new Pil(req.body)
-        await eklenecekPil.save()
-        res.json(eklenecekPil)
+        const eklenecekPilTuru= await PilTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekPilTuru.karbonDegeri)*(req.body.miktar)
+        const pil={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniPilEkle = new Pil(pil)
+        await yeniPilEkle.save()
+        res.json(yeniPilEkle)
     } catch (e) {
         next(e)
     }
+}
+
+
+const pilKayitListele=async (req, res, next) => {
+    const tumPiller = await Pil.find({})
+    res.json(tumPiller)
+}
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininPilleri = await Pil.find({email:req.params.email})
+    res.json(kisininPilleri)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Pil.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminPilSil=async (req,res,next)=>{
@@ -29,5 +58,8 @@ const adminPilSil=async (req,res,next)=>{
 
 module.exports = {
     yeniPilEkle,
-    adminPilSil
+    adminPilSil,
+    pilKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }

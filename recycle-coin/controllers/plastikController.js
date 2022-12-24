@@ -1,13 +1,41 @@
+const { PlastikTur } = require('../models/kategoriModel')
 const Plastik = require('../models/plastikModel')
 
 const yeniPlastikEkle = async (req, res, next) => {
     try {
-        const eklenecekPlastik = new Plastik(req.body)
-        await eklenecekPlastik.save()
-        res.json(eklenecekPlastik)
+        const eklenecekPlastikTuru= await PlastikTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekPlastikTuru.karbonDegeri)*(req.body.miktar)
+        const plastik={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniPlastikEkle = new Plastik(plastik)
+        await yeniPlastikEkle.save()
+        res.json(yeniPlastikEkle)
     } catch (e) {
         next(e)
     }
+}
+
+const plastikKayitListele=async (req, res, next) => {
+    const tumPlastikler = await Plastik.find({})
+    res.json(tumPlastikler)
+}
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininPlastikleri = await Plastik.find({email:req.params.email})
+    res.json(kisininPlastikleri)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Plastik.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminPlastikSil=async (req,res,next)=>{
@@ -29,5 +57,8 @@ const adminPlastikSil=async (req,res,next)=>{
 
 module.exports = {
     yeniPlastikEkle,
-    adminPlastikSil
+    adminPlastikSil,
+    plastikKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }

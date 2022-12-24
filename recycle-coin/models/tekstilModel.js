@@ -6,7 +6,7 @@ const tekstilSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'tekstiller'})
 
 const Tekstil=mongoose.model('Tekstil',tekstilSchema)

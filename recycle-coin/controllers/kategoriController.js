@@ -1,4 +1,4 @@
-const {Kategori,CamTur, PlastikTur,KagitTur,PilTur,AluminyumTur,DemirTur,AhsapTur,BetonTur,TekstilTur,ElektronikTur}=require('../models/kategoriModel')
+const { Kategori, CamTur, PlastikTur, KagitTur, PilTur, AluminyumTur, DemirTur, AhsapTur, BetonTur, TekstilTur, ElektronikTur } = require('../models/kategoriModel')
 
 const tumKategorileriListele = async (req, res) => {
     const tumKategoriler = await Kategori.find({})
@@ -55,7 +55,7 @@ const tumElektronikTurleriniListele = async (req, res) => {
     res.json(tumElektronikTurleri)
 }
 
-module.exports={
+module.exports = {
     tumKategorileriListele,
     tumCamTurleriniListele,
     tumPlastikTurleriniListele,

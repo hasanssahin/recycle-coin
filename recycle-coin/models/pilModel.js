@@ -6,7 +6,7 @@ const pilSchema=new Schema({
     email:String,
     tur:String,
     miktar:Number,
-    verilenKarbon:Number
+    toplamKarbon:Number
 },{ collection: 'piller'})
 
 const Pil=mongoose.model('Pil',pilSchema)

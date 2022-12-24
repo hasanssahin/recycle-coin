@@ -1,13 +1,41 @@
+const { TekstilTur } = require('../models/kategoriModel')
 const Tekstil = require('../models/tekstilModel')
 
 const yeniTekstilEkle = async (req, res, next) => {
     try {
-        const eklenecekTekstil = new Tekstil(req.body)
-        await eklenecekTekstil.save()
-        res.json(eklenecekTekstil)
+        const eklenecekTekstilTuru= await TekstilTur.findOne({turu:req.body.tur})
+        const verilecekKarbonMiktari=(eklenecekTekstilTuru.karbonDegeri)*(req.body.miktar)
+        const tekstil={
+            sha:req.body.sha,
+            email:req.body.email,
+            tur:req.body.tur,
+            miktar:req.body.miktar,
+            toplamKarbon:verilecekKarbonMiktari
+        }
+        const yeniTekstilEkle = new Tekstil(tekstil)
+        await yeniTekstilEkle.save()
+        res.json(yeniTekstilEkle)
     } catch (e) {
         next(e)
     }
+}
+
+const tekstilKayitListele=async (req, res, next) => {
+    const tumTekstiller = await Tekstil.find({})
+    res.json(tumTekstiller)
+}
+
+const kisiKayitlari=async (req, res, next) => {
+    const kisininTekstilleri = await Tekstil.find({email:req.params.email})
+    res.json(kisininTekstilleri)
+}
+
+const kisiKayitSayisi=async (req, res, next) => {
+    const sonuc=await Tekstil.aggregate([
+        {$match:{sha:req.params.sha}},
+        {$count:"toplam"}
+    ])
+    res.json(sonuc)
 }
 
 const adminTekstilSil=async (req,res,next)=>{
@@ -28,5 +56,8 @@ const adminTekstilSil=async (req,res,next)=>{
 
 module.exports = {
     yeniTekstilEkle,
-    adminTekstilSil
+    adminTekstilSil,
+    tekstilKayitListele,
+    kisiKayitlari,
+    kisiKayitSayisi
 }
